@@ -9,10 +9,10 @@
 bl_info = {
     "name": "Wrapping Tools",
     "author": "Rich Colburn, email: the3dadvantage@gmail.com",
-    "version": (1, 0),
+    "version": (1, 0, 2),
     "blender": (2, 80, 0),
     "location": "View3D > Extended Tools",
-    "description": "Tools for deforming around complex surfaces",
+    "description": "Tools for deforming around complex surfaces. Fixed by Lordchammon",
     "warning": "If God loses self-confidence He will be an atheist",
     "wiki_url": "",
     "category": '3D View'}

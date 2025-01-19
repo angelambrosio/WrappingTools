@@ -4,8 +4,8 @@ import numpy as np
 bl_info = {
     "name": "UV Shape",
     "author": "Rich Colburn, email: the3dadvantage@gmail.com",
-    "version": (1, 0),
-    "blender": (2, 80, 0),
+    "version": (1, 0, 2),
+    "blender": (4, 2, 0),
     "location": "View3D > Extended Tools > Create UV Shape",
     "description": "Creates a flattened version of the mesh as a shape key",
     "warning": "Life is a vapor of smoke. Eternity lasts forever.",
@@ -18,7 +18,7 @@ def get_selected_edges(ob='empty'):
     '''returns a bool array of selected edges'''
     if ob == 'empty':
         ob = bpy.context.object
-    ed = np.zeros(len(ob.data.edges), dtype=np.bool)
+    ed = np.zeros(len(ob.data.edges), dtype=np.bool_)
     ob.data.edges.foreach_get('select', ed)
     return ed
 
@@ -140,7 +140,7 @@ def basic_unwrap():
     
     ob.data.uv_layers.active_index = len(ob.data.uv_layers) - 1
     ob.active_shape_key_index = 0
-    data.vertices.foreach_set('select', np.ones(len(data.vertices), dtype=np.bool))
+    data.vertices.foreach_set('select', np.ones(len(data.vertices), dtype=np.bool_))
 
     bpy.ops.object.mode_set(mode='EDIT')
     bpy.ops.uv.unwrap(method='ANGLE_BASED', margin=0.0635838)
@@ -375,7 +375,7 @@ def autosplit_geometry():
             bpy.ops.object.mode_set(mode='OBJECT')
             
             # use numpy to count remaining
-            stored = np.zeros(len(ob.data.vertices), dtype=np.bool)
+            stored = np.zeros(len(ob.data.vertices), dtype=np.bool_)
             ob.data.vertices.foreach_get('select', stored)
             remaining = len(stored[stored])
             

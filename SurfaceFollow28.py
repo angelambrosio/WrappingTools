@@ -2,12 +2,11 @@
 # If there are weird bind errors like the mesh is not deforming correctly, compare 
 #   the oct version of closest triangles to the one without oct
 
-
 bl_info = {
     "name": "Surface Follow",
     "author": "Rich Colburn, email: the3dadvantage@gmail.com",
-    "version": (1, 0),
-    "blender": (2, 80, 0),
+    "version": (1, 0, 2),
+    "blender": (4, 2, 0),
     "location": "View3D > Extended Tools > Surface Follow",
     "description": "Doforms an object as the surface of another object changes",
     "warning": "You might have only imagined you were halucinating",
@@ -262,7 +261,7 @@ def nearest_triangles_oct(surface_coords, follower_coords, tris):  # octree
     # yes I really created an octree inline. What's the world coming to... I know, I know
     follow_co = follower_coords.astype(np.float32)
     surface_co = surface_coords.astype(np.float32)
-    fill_me = np.zeros(len(follow_co), dtype=np.int)
+    fill_me = np.zeros(len(follow_co), dtype=np.int_)
     
     means = np.mean(surface_co[tris], axis=1)
     # 2: Get the mean of the surface tri means.
